@@ -72,9 +72,9 @@ class MemberController
     //delete
     public function destroy(Request $request)
     {
-        $where = array('id' => $request->id);
-        $member = Member::where('id',  $where)->delete();
 
+        $where = array('id' => $request->id);
+        $member = Member::where('id', $where)->delete();
         return Response()->json($member);
     }
 }

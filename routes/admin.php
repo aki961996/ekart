@@ -6,6 +6,8 @@ use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\EmployeesController;
 use App\Http\Controllers\DemoController;
 use App\Http\Controllers\MemberController;
+use App\Http\Controllers\PostController;
+use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\User\HomepageController;
 use Illuminate\Support\Facades\Route;
 //main route
@@ -16,6 +18,7 @@ Route::name('admin.')->group(function () {
     //middelware
     Route::middleware('auth:admin')->group(function () {
         Route::get('admin/logout', [LoginController::class, 'logout'])->name('logout');
+
         Route::get('admin/dashboard', [DashboardController::class, 'dashboard'])->name('dashboard');
 
 
@@ -28,7 +31,7 @@ Route::name('admin.')->group(function () {
             Route::post('update-employees', [EmployeesController::class, 'updateEmployees'])->name('update-employees');
         });
 
-        // members  //this is calls apis ajax
+        // members  //this is calls apis ajax ajax
         Route::name('members.')->prefix('admin/members')->group(function () {
             Route::get('/', [MemberController::class, 'index'])->name('members');
             Route::post('store', [MemberController::class, 'store'])->name('store');
@@ -45,6 +48,18 @@ Route::name('admin.')->group(function () {
             Route::get('edit/{id}', [ProductController::class, 'edit'])->name('edit');
             Route::post('update', [ProductController::class, 'update'])->name('update');
         });
+        //route grouping  post
+        Route::name('post.')->prefix('admin')->group(function () {
+            Route::get('posts', [PostController::class, 'index'])->name('index');
+            Route::get('category_data', [PostController::class, 'category_data'])->name('category_data');
+        });
+
+        // profile
+
+        Route::name('profile.')->prefix('admin/profile')->group(function () {
+            Route::get('/', [ProfileController::class, 'index'])->name('edit');
+        });
+
 
         //demo
         Route::name('demo.')->prefix('admin/demo')->group(function () {

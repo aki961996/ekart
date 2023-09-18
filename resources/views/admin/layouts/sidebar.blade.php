@@ -41,6 +41,15 @@
                 </p>
             </a>
         </li>
+        <li class="nav-item">
+            <a href="{{route('admin.post.index')}}" class="nav-link">
+                <i class="nav-icon fas fa-th"></i>
+                <p>
+                    Posts
+
+                </p>
+            </a>
+        </li>
 
         <li class="nav-item">
             <a href="{{route('admin.logout')}}" class="nav-link">
@@ -53,14 +62,6 @@
         </li>
 
 
-        <li class="nav-item">
-            <a href="{{route('admin.demo.demo')}}" class="nav-link">
-                <i class="nav-icon fas fa-th"></i>
-                <p>
-                    Demo
 
-                </p>
-            </a>
-        </li>
 
 </nav>

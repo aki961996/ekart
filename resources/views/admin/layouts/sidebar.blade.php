@@ -22,7 +22,7 @@
             </a>
         </li>
 
-        <li class="nav-item">
+        {{-- <li class="nav-item">
             <a href="{{route('admin.employees.employees')}}" class="nav-link">
                 <i class="nav-icon fas fa-th"></i>
                 <p>
@@ -30,7 +30,7 @@
 
                 </p>
             </a>
-        </li>
+        </li> --}}
 
         <li class="nav-item">
             <a href="{{route('admin.members.members')}}" class="nav-link">
@@ -46,6 +46,16 @@
                 <i class="nav-icon fas fa-th"></i>
                 <p>
                     Posts
+
+                </p>
+            </a>
+        </li>
+
+        <li class="nav-item">
+            <a href="{{route('admin.employees.employees')}}" class="nav-link">
+                <i class="nav-icon fas fa-th"></i>
+                <p>
+                    Employees
 
                 </p>
             </a>

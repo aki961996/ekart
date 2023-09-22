@@ -2,19 +2,24 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Department;
+use App\Models\Designation;
 use App\Models\Employee;
-use App\Models\Member;
 use Illuminate\Http\Request;
 use DataTables;
 
-class MemberController
+class EmployeeController
 {
     public function index(Request $request)
     {
+
+        $dep = Department::all();
+
+
         if ($request->ajax()) {
 
             // $data = Member::latest()->get();
-            $data = Member::all();
+            $data = Employee::all();
             // dd($data);
 
             return Datatables::of($data)
@@ -30,51 +35,41 @@ class MemberController
                 ->rawColumns(['action'])
                 ->make(true);
         }
-        // $memberDatas = Member::all();
-        return view('member.index');
+
+        return view('admin.employees.index', ['dep' => $dep]);
     }
-
-    public function store(Request $request)
+    public function save(Request $request)
     {
-        $memberId = request('id');
-
-
-        $member = Member::updateOrCreate(
+        $employeId = request('id');
+        $emp = Employee::updateOrCreate(
             [
-                'id' => $memberId,
+                'id' => $employeId,
             ],
             [
                 'name' => $request->name,
                 'email' => $request->email,
                 'address' => $request->address,
+                'dob' => date('Y-m-d', strtotime($request->dob)),
+                'gender' => $request->gender,
+                'mobile' => $request->mobile,
+                'depertment_id' => $request->depertment_id,
+                'designation_id' => $request->designation_id,
+                'doj' => date('Y-m-d', strtotime($request->doj)),
+                'image' => $request->image,
+
             ]
         );
-
-        return response()->json($member);
+        return response()->json($emp);
     }
 
-    //edit
-    public function edit(Request $request)
+    public function fetchDesignation(Request $request)
     {
-        $where = array('id' => $request->id);
-        //$member = Member::find($where);
-        //dd($member);
-        $member  = Member::where($where)->first();
+        $des = Designation::where('depertment_id', $request->depertmentId)->get();
 
-        return Response()->json($member);
-        // return response()->json([
-        //     'message' => 'Member Fetch successfuly',
-        //     'status' => 200,
-        //     'res' => $member
-        // ]);
-    }
-
-    //delete
-    public function destroy(Request $request)
-    {
-
-        $where = array('id' => $request->id);
-        $member = Member::where('id', $where)->delete();
-        return Response()->json($member);
+        $response = [
+            'status' => 200,
+            'data' => $des
+        ];
+        return response()->json($response);
     }
 }

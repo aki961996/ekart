@@ -25,4 +25,26 @@ class Employee extends Model
 
 
     ];
+
+    //gender value chhnage appending
+
+    public function getGenderTextAttribute()
+    {
+        if ($this->gender == 1) {
+
+            return "Male";
+        }
+        if ($this->gender == 2) {
+            return "Female";
+        } else {
+            return "Trancgender";
+        }
+    }
+
+    // public function getStatusTextAttribute()
+    // {
+    //     if ($this->status == 1) return 'Active';
+    //     else return 'Inactive';
+    // }
+    protected $appends = ['gender_text'];
 }

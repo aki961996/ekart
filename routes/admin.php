@@ -5,6 +5,7 @@ use App\Http\Controllers\Admin\LoginController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\EmployeesController;
 use App\Http\Controllers\DemoController;
+use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\MemberController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\ProfileController;
@@ -22,14 +23,13 @@ Route::name('admin.')->group(function () {
         Route::get('admin/dashboard', [DashboardController::class, 'dashboard'])->name('dashboard');
 
 
-        // employees  //this is calls apis ajax
+        //employees api
         Route::name('employees.')->prefix('admin/employees')->group(function () {
-            Route::get('/', [EmployeesController::class, 'employees'])->name('employees');
-            Route::post('save', [EmployeesController::class, 'save'])->name('save');
-            Route::post('fetch-designation', [EmployeesController::class, 'fetchDesignation'])->name('fetch-designation');
-            Route::get('edit-employees/{id}', [EmployeesController::class, 'editEmployees'])->name('edit-employees');
-            Route::post('update-employees', [EmployeesController::class, 'updateEmployees'])->name('update-employees');
+            Route::get('/', [EmployeeController::class, 'index'])->name('employees');
+            Route::post('save', [EmployeeController::class, 'save'])->name('save');
+            Route::post('fetchDesignation', [EmployeeController::class, 'fetchDesignation'])->name('fetchDesignation');
         });
+
 
         // members  //this is calls apis ajax ajax
         Route::name('members.')->prefix('admin/members')->group(function () {

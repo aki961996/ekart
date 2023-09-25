@@ -24,8 +24,11 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css">
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.0/dist/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js">
+    </script>
     <link href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.min.css" rel="stylesheet">
     <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
 
 </head>
 <!--
@@ -107,7 +110,7 @@
     <!-- jQuery -->
     {{-- <script src="{{asset('js/jquery.min.js')}}"></script> --}}
     <!-- Bootstrap -->
-    <script src="{{asset('js/bootstrap.bundle.min.js')}}"></script>
+    {{-- <script src="{{asset('js/bootstrap.bundle.min.js')}}"></script> --}}
     <!-- AdminLTE -->
     <script src="{{asset('js/adminlte.js')}}"></script>
     {{-- jqry ui --}}
@@ -116,11 +119,11 @@
 
     <script src="{{asset('js/main.js')}}"></script>
     <script src="{{asset('js/post.js')}}"></script>
+    <script src="{{asset('js/todo.js')}}"></script>
     <script>
         const url = '{{ route('admin.post.index') }}';
+        const todo_url = '{{ route('admin.todos.todos') }}';
     </script>
-
-
     {{-- @yield('scripts') --}}
 
 

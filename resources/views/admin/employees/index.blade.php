@@ -10,7 +10,7 @@
                     <h2>Employee List</h2>
                 </div>
                 <div class="col-12 d-flex justify-content-end">
-                    <a class="btn btn-success" onClick="add()" href="javascript:void(0)">Create Employee</a>
+                    <a class="btn btn-success" onClick="openModal()" href="javascript:void(0)">Create Employee</a>
                 </div>
 
             </div>
@@ -42,7 +42,7 @@
     </div>
 
     {{-- model employee --}}
-    <div class="modal fade" id="employeeModal" aria-hidden="true">
+    <div class="modal fade" id="employeeModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
                 <div class="modal-header">
@@ -181,15 +181,17 @@
     order: [[0, 'desc']]
     });
 
-
+   
  });
 
 
 
       
 
-     function add(){
-      $('#employeeModal').modal('show');
+     function openModal(){
+     var employeeModal = new bootstrap.Modal(document.getElementById('employeeModal'));
+      employeeModal.show();
+
       $('#changeNameHead').html('Add Employee');
       $('#FormEmploye').trigger('reset');
       $('#id').val('');

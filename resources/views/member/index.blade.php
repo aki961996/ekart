@@ -11,7 +11,7 @@
                 </div>
                 <div class="col-12">
                     <div class="pull-right mb-2">
-                        <a class="btn btn-success" onClick="add()" href="javascript:void(0)"> Create Employee</a>
+                        <a class="btn btn-success" onClick="create()" href="javascript:void(0)"> Create Member</a>
                     </div>
                     <div class="pull-left mb-2">
                         <a href="{{route('admin.dashboard')}}" class="btn btn-success" href="javascript:void(0)">
@@ -44,15 +44,15 @@
     </div>
 
     <!-- boostrap employee model -->
-    <div class="modal fade" id="employee-modal" aria-hidden="true">
+    <div class="modal fade" id="memberModal" aria-hidden="true">
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="EmployeeModal">Member</h5>
+                    <h5 class="modal-title" id="member_Modal">Member</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <form action="javascript:void(0)" id="EmployeeForm" name="EmployeeForm" class="form-horizontal"
+                    <form action="javascript:void(0)" id="memberForm" name="EmployeeForm" class="form-horizontal"
                         method="POST" enctype="multipart/form-data">
                         <input type="hidden" name="id" id="id">
                         <div class="form-group">
@@ -115,10 +115,11 @@
 });
 
  
-function add(){
-    $('#EmployeeForm').trigger("reset");
-    $('#EmployeeModal').html("Add Member");
-    $('#employee-modal').modal('show');
+function create(){
+
+    $('#memberForm').trigger("reset");
+    $('#member_Modal').html("Add Member");
+    $('#memberModal').modal('show');
     $('#id').val('');
 }   
      
@@ -130,8 +131,8 @@ function editFunc(id){
         dataType: 'json',
         success: function(res){
             //console.log(res);
-            $('#EmployeeModal').html("Edit Member");
-            $('#employee-modal').modal('show');
+            $('#member_Modal').html("Edit Member");
+            $('#memberModal').modal('show');
             $('#id').val(res.id);
             $('#name').val(res.name);
             $('#address').val(res.address);
@@ -160,7 +161,7 @@ function deleteFunc(id){
     }
 }
  
-$('#EmployeeForm').submit(function(e) {
+$('#memberForm').submit(function(e) {
     e.preventDefault();
     var formData = new FormData(this);
     $.ajax({
@@ -171,7 +172,7 @@ $('#EmployeeForm').submit(function(e) {
         contentType: false,
         processData: false,
         success: (data) => {
-            $("#employee-modal").modal('hide');
+            $("#memberModal").modal('hide');
             var oTable = $('#ajax-crud-datatable').dataTable();
             oTable.fnDraw(false);
             $("#btn-save").html('Submit');

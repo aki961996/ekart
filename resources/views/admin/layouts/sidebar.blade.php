@@ -60,6 +60,15 @@
                 </p>
             </a>
         </li>
+        <li class="nav-item">
+            <a href="{{route('admin.todos.todos')}}" class="nav-link">
+                <i class="nav-icon fas fa-th"></i>
+                <p>
+                    Todo
+
+                </p>
+            </a>
+        </li>
 
         <li class="nav-item">
             <a href="{{route('admin.logout')}}" class="nav-link">

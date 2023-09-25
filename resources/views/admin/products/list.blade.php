@@ -50,6 +50,13 @@
             <a href="{{route('admin.product.create')}}" class="btn btn-primary">Add Products</a>
           </div>
 
+          <div class="card-header text-right">
+
+            <a href="{{route('admin.students.students')}}" class="btn btn-success"> <i
+                class="fas fa-plus-circle"></i></a>
+          </div>
+
+
           {{-- script --}}
           <script>
             @if(Session::has('message'))
